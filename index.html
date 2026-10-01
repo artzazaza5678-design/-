@@ -5,77 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ระบบจองห้องประชุม | ตุลาคม 2569</title>
 <style>
-:root{
-  --primary:#087f7a; --primary2:#0ca39c; --bg:#f4f8f8; --card:#fff;
-  --text:#173333; --muted:#718383; --danger:#d9534f; --warning:#e89a24;
-  --border:#dce9e8; --shadow:0 10px 30px rgba(13,77,74,.08);
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,"Noto Sans Thai",sans-serif;background:var(--bg);color:var(--text)}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
-.hidden{display:none!important}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#e8f7f5,#f7fbfb)}
-.login-card{width:min(420px,100%);background:#fff;border-radius:24px;padding:34px;box-shadow:var(--shadow);border:1px solid var(--border)}
-.logo{width:62px;height:62px;border-radius:18px;background:var(--primary);color:white;display:grid;place-items:center;font-size:28px;margin-bottom:18px}
-h1,h2,h3{margin:0 0 10px}
-.sub{color:var(--muted);line-height:1.6}
-.field{margin:14px 0}
-label{display:block;font-weight:700;font-size:14px;margin-bottom:7px}
-input,select,textarea{width:100%;border:1px solid var(--border);border-radius:12px;padding:12px 13px;background:#fff;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--primary2);box-shadow:0 0 0 3px rgba(12,163,156,.12)}
-.btn{padding:11px 16px;border-radius:12px;font-weight:700}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:#066d69}
-.btn-light{background:#edf5f4;color:var(--primary)}
-.btn-danger{background:#fff0ef;color:#b53e3a}
-.btn-small{padding:7px 10px;border-radius:9px;font-size:13px}
-.error{color:var(--danger);font-size:14px;margin-top:10px}
-.app{min-height:100vh}
-.header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
-.header-inner{max-width:1200px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand-icon{width:44px;height:44px;border-radius:13px;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:21px}
-.brand small{display:block;color:var(--muted);margin-top:3px}
-.container{max-width:1200px;margin:0 auto;padding:24px 22px 50px}
-.hero{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}
-.hero p{margin:5px 0 0;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:20px}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.week{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-bottom:7px}
-.week div{text-align:center;color:var(--muted);font-size:12px;font-weight:700;padding:5px}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
-.day{min-height:94px;border:1px solid var(--border);border-radius:12px;padding:8px;background:#fff}
-.day.muted{background:#f8fbfb;color:#b7c4c3}
-.day.today{border:2px solid var(--primary2)}
-.daynum{font-weight:800;margin-bottom:7px}
-.slot{font-size:11px;padding:5px 6px;border-radius:7px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.slot.free{background:#edf8f6;color:#117a75}
-.slot.busy{background:#ffeceb;color:#ad3e39}
-.slot.na{background:#f1f3f3;color:#99a6a5}
-.booking-list{display:flex;flex-direction:column;gap:10px;max-height:560px;overflow:auto}
-.booking{border:1px solid var(--border);border-radius:13px;padding:13px}
-.booking-top{display:flex;justify-content:space-between;gap:10px}
-.badge{display:inline-block;font-size:11px;padding:5px 8px;border-radius:999px;font-weight:800}
-.badge-am{background:#fff5dc;color:#a86a00}.badge-pm{background:#eaf0ff;color:#3f62ad}
-.booking .meta{color:var(--muted);font-size:13px;line-height:1.65;margin-top:7px}
-.actions{display:flex;gap:7px;margin-top:10px}
-.empty{color:var(--muted);text-align:center;padding:30px 10px}
-.modal-backdrop{position:fixed;inset:0;background:rgba(15,40,40,.45);display:grid;place-items:center;padding:20px;z-index:20}
-.modal{width:min(620px,100%);background:#fff;border-radius:20px;padding:23px;max-height:92vh;overflow:auto}
-.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.close{width:36px;height:36px;border-radius:10px;background:#f1f5f5;color:#456}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.full{grid-column:1/-1}
-.radio-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.radio{border:1px solid var(--border);padding:12px;border-radius:12px;cursor:pointer}
-.radio input{width:auto;margin-right:7px}
-.radio.disabled{opacity:.45;cursor:not-allowed}
-.notice{padding:11px 13px;border-radius:11px;background:#eef8f7;color:#176e69;font-size:13px;line-height:1.5;margin:12px 0}
-.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}
-@media(max-width:850px){.grid{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.day{min-height:82px}.slot{font-size:10px}.header-inner{padding:13px 15px}.container{padding:18px 15px 40px}}
-@media(max-width:520px){.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.radio-row{grid-template-columns:1fr}.cal,.week{gap:4px}.day{padding:5px;min-height:74px}.slot{padding:4px}.brand small{font-size:11px}}
+:root{--primary:#087f7a;--primary2:#0ca39c;--bg:#f4f8f8;--card:#fff;--text:#173333;--muted:#718383;--danger:#d9534f;--warning:#e89a24;--border:#dce9e8;--shadow:0 10px 30px rgba(13,77,74,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Thai",sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#e8f7f5,#f7fbfb)}.login-card{width:min(450px,100%);background:#fff;border-radius:24px;padding:34px;box-shadow:var(--shadow);border:1px solid var(--border)}.logo{width:62px;height:62px;border-radius:18px;background:var(--primary);color:white;display:grid;place-items:center;font-size:28px;margin-bottom:18px}h1,h2,h3{margin:0 0 10px}.sub{color:var(--muted);line-height:1.6}.field{margin:14px 0}label{display:block;font-weight:700;font-size:14px;margin-bottom:7px}input,select,textarea{width:100%;border:1px solid var(--border);border-radius:12px;padding:12px 13px;background:#fff;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--primary2);box-shadow:0 0 0 3px rgba(12,163,156,.12)}
+.btn{padding:11px 16px;border-radius:12px;font-weight:700}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#066d69}.btn-light{background:#edf5f4;color:var(--primary)}.btn-danger{background:#fff0ef;color:#b53e3a}.btn-warning{background:#fff6df;color:#9a6500}.btn-small{padding:7px 10px;border-radius:9px;font-size:13px}.error{color:var(--danger);font-size:14px;margin-top:10px}.success{color:#14746f;background:#edf8f6;padding:10px;border-radius:10px;font-size:13px;margin-top:10px}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:#edf5f4;border-radius:12px;padding:4px;margin:18px 0}.auth-tab{padding:10px;border-radius:9px;background:transparent;color:var(--muted);font-weight:700}.auth-tab.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.app{min-height:100vh}.header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}.header-inner{max-width:1200px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:44px;height:44px;border-radius:13px;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:21px}.brand small{display:block;color:var(--muted);margin-top:3px}.user-pill{font-size:12px;background:#edf8f6;color:#176e69;padding:7px 10px;border-radius:999px}.container{max-width:1200px;margin:0 auto;padding:24px 22px 50px}.hero{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}.hero p{margin:5px 0 0;color:var(--muted)}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}.card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:20px}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-bottom:7px}.week div{text-align:center;color:var(--muted);font-size:12px;font-weight:700;padding:5px}.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{min-height:110px;border:1px solid var(--border);border-radius:12px;padding:8px;background:#fff}.day.muted{background:#f8fbfb;color:#b7c4c3}.day.today{border:2px solid var(--primary2)}.daynum{font-weight:800;margin-bottom:7px}.slot{font-size:11px;padding:5px 6px;border-radius:7px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.slot.free{background:#edf8f6;color:#117a75}.slot.busy{background:#ffeceb;color:#ad3e39}.slot.na{background:#f1f3f3;color:#99a6a5}.booking-list{display:flex;flex-direction:column;gap:10px;max-height:560px;overflow:auto}.booking{border:1px solid var(--border);border-radius:13px;padding:13px}.booking-top{display:flex;justify-content:space-between;gap:10px}.badge{display:inline-block;font-size:11px;padding:5px 8px;border-radius:999px;font-weight:800}.badge-am{background:#fff5dc;color:#a86a00}.badge-pm{background:#eaf0ff;color:#3f62ad}.badge-day{background:#e9f7ec;color:#28753b}.booking .meta{color:var(--muted);font-size:13px;line-height:1.65;margin-top:7px}.actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.empty{color:var(--muted);text-align:center;padding:30px 10px}.modal-backdrop{position:fixed;inset:0;background:rgba(15,40,40,.45);display:grid;place-items:center;padding:20px;z-index:20}.modal{width:min(680px,100%);background:#fff;border-radius:20px;padding:23px;max-height:92vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.close{width:36px;height:36px;border-radius:10px;background:#f1f5f5;color:#456}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.full{grid-column:1/-1}.radio-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.radio{border:1px solid var(--border);padding:12px;border-radius:12px;cursor:pointer}.radio input{width:auto;margin-right:7px}.radio.disabled{opacity:.45;cursor:not-allowed}.notice{padding:11px 13px;border-radius:11px;background:#eef8f7;color:#176e69;font-size:13px;line-height:1.5;margin:12px 0}.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}.admin-panel{margin-top:20px}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.room-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid var(--border);border-radius:12px;margin-top:9px}.room-meta{font-size:12px;color:var(--muted);line-height:1.5}.section-actions{display:flex;gap:8px;flex-wrap:wrap}.mini-title{font-size:15px;font-weight:800;margin-bottom:10px}.check-row{display:flex;gap:8px;flex-wrap:wrap}.check{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:9px;padding:8px 10px;font-size:13px;font-weight:400}.check input{width:auto}.top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+@media(max-width:850px){.grid,.admin-grid{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.day{min-height:90px}.slot{font-size:10px}.header-inner{padding:13px 15px}.container{padding:18px 15px 40px}}@media(max-width:520px){.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.radio-row{grid-template-columns:1fr}.cal,.week{gap:4px}.day{padding:5px;min-height:78px}.slot{padding:4px}.brand small{font-size:11px}.user-pill{display:none}}
 </style>
 </head>
 <body>
@@ -84,189 +19,94 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary2);box-shadow:
     <div class="logo">🏢</div>
     <h1>ระบบจองห้องประชุม</h1>
     <p class="sub">ใช้งานส่วนตัว · 1–30 ตุลาคม 2569</p>
-    <div class="field"><label>ชื่อผู้ใช้</label><input id="username" autocomplete="username" placeholder="Username"></div>
-    <div class="field"><label>รหัสผ่าน</label><input id="password" type="password" autocomplete="current-password" placeholder="Password"></div>
-    <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="login()">เข้าสู่ระบบ</button>
-    <div id="loginError" class="error hidden">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
-    <p class="sub" style="font-size:12px;margin-top:18px">บัญชีเริ่มต้น: <b>admin</b> / <b>1234</b></p>
+    <div class="auth-tabs"><button id="tabLogin" class="auth-tab active" onclick="showAuth('login')">เข้าสู่ระบบ</button><button id="tabSignup" class="auth-tab" onclick="showAuth('signup')">สมัครสมาชิก</button></div>
+    <div id="loginForm">
+      <div class="field"><label>ชื่อผู้ใช้</label><input id="username" autocomplete="username" placeholder="Username"></div>
+      <div class="field"><label>รหัสผ่าน</label><input id="password" type="password" autocomplete="current-password" placeholder="Password"></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="login()">เข้าสู่ระบบ</button>
+      <div id="loginError" class="error hidden">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
+    </div>
+    <div id="signupForm" class="hidden">
+      <div class="field"><label>ชื่อผู้ใช้ *</label><input id="newUsername" autocomplete="username" placeholder="ตั้งชื่อผู้ใช้"></div>
+      <div class="field"><label>รหัสผ่าน *</label><input id="newPassword" type="password" autocomplete="new-password" placeholder="อย่างน้อย 4 ตัวอักษร"></div>
+      <div class="field"><label>ยืนยันรหัสผ่าน *</label><input id="newPassword2" type="password" autocomplete="new-password" placeholder="กรอกรหัสผ่านอีกครั้ง"></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="signup()">สมัครสมาชิก</button>
+      <div id="signupError" class="error hidden"></div><div id="signupSuccess" class="success hidden"></div>
+    </div>
+    <p class="sub" style="font-size:12px;margin-top:18px">ผู้ดูแลระบบ: <b>kitti</b> · สมาชิกสามารถสมัครบัญชีเองได้</p>
   </div>
 </div>
 
 <div id="app" class="app hidden">
-<header class="header">
-  <div class="header-inner">
-    <div class="brand">
-      <div class="brand-icon">📅</div>
-      <div><b>ระบบจองห้องประชุม</b><small>1–30 ตุลาคม 2569</small></div>
-    </div>
-    <button class="btn btn-light" onclick="logout()">ออกจากระบบ</button>
-  </div>
-</header>
-
+<header class="header"><div class="header-inner"><div class="brand"><div class="brand-icon">📅</div><div><b>ระบบจองห้องประชุม</b><small>1–30 ตุลาคม 2569</small></div></div><div class="top-actions"><span id="userPill" class="user-pill"></span><button class="btn btn-light" onclick="logout()">ออกจากระบบ</button></div></div></header>
 <main class="container">
-  <div class="hero">
-    <div><h1>ตารางห้องประชุม</h1><p>เลือกดูสถานะการจอง และเพิ่มรายการใหม่ได้จากหน้านี้</p></div>
-    <button class="btn btn-primary" onclick="openModal()">＋ จองห้องประชุม</button>
-  </div>
+  <div class="hero"><div><h1>ตารางห้องประชุม</h1><p>เลือกดูสถานะการจอง และเพิ่มรายการใหม่ได้จากหน้านี้</p></div><button class="btn btn-primary" onclick="openModal()">＋ จองห้องประชุม</button></div>
+  <div class="grid"><section class="card"><div class="calendar-head"><div><h2>ตุลาคม 2569</h2><span class="sub">แสดงเฉพาะวันที่ 1–30 ต.ค.</span></div></div><div class="week"><div>จ.</div><div>อ.</div><div>พ.</div><div>พฤ.</div><div>ศ.</div><div>ส.</div><div>อา.</div></div><div id="calendar" class="cal"></div><div class="footer">🟢 ว่าง &nbsp; 🔴 จองแล้ว &nbsp; ⚪ ไม่เปิดให้จอง</div></section>
+  <section class="card"><div class="calendar-head"><div><h2>รายการจอง</h2><span class="sub">สมาชิกแก้ไข/ลบได้เฉพาะรายการของตัวเอง · Admin จัดการได้ทั้งหมด</span></div></div><div id="bookingList" class="booking-list"></div></section></div>
 
-  <div class="grid">
-    <section class="card">
-      <div class="calendar-head">
-        <div><h2>ตุลาคม 2569</h2><span class="sub">แสดงเฉพาะวันที่ 1–30 ต.ค.</span></div>
-      </div>
-      <div class="week"><div>จ.</div><div>อ.</div><div>พ.</div><div>พฤ.</div><div>ศ.</div><div>ส.</div><div>อา.</div></div>
-      <div id="calendar" class="cal"></div>
-      <div class="footer">🟢 ว่าง &nbsp; 🔴 จองแล้ว &nbsp; ⚪ ไม่เปิดให้จอง</div>
-    </section>
+  <section id="adminPanel" class="card admin-panel hidden"><div class="calendar-head"><div><h2>⚙️ จัดการห้องประชุม</h2><span class="sub">เฉพาะ Admin สามารถเพิ่มและลบห้องประชุมได้</span></div><button class="btn btn-primary" onclick="openRoomModal()">＋ เพิ่มห้องประชุม</button></div><div id="roomList"></div></section>
+</main></div>
 
-    <section class="card">
-      <div class="calendar-head"><div><h2>รายการจอง</h2><span class="sub">เรียงตามวันที่และช่วงเวลา</span></div></div>
-      <div id="bookingList" class="booking-list"></div>
-    </section>
-  </div>
-</main>
-</div>
+<div id="modal" class="modal-backdrop hidden" onclick="backdropClose(event)"><div class="modal"><div class="modal-head"><div><h2 id="modalTitle">จองห้องประชุม</h2><p class="sub">กรอกรายละเอียดการใช้งาน</p></div><button class="close" onclick="closeModal()">✕</button></div><div class="notice">ระบบตรวจสอบ <b>ห้อง + วันที่ + ช่วงเวลา</b> และไม่อนุญาตให้จองซ้ำ โดยการจอง “ทั้งวัน” จะล็อกทั้งภาคเช้าและภาคบ่าย</div><div class="form-grid"><div class="field"><label>วันที่ *</label><input id="date" type="date" min="2026-10-01" max="2026-10-30" onchange="updateSlots()"></div><div class="field"><label>ห้องประชุม *</label><select id="room" onchange="updateSlots()"></select></div><div class="field full"><label>ช่วงเวลา *</label><div id="periodOptions" class="radio-row"></div></div><div class="field full"><label>หัวข้อ / เรื่อง *</label><input id="topic" placeholder="เช่น ประชุมเตรียมงาน"></div><div class="field"><label>ผู้เข้าร่วม</label><input id="participants" placeholder="เช่น 10 คน / รายชื่อ"></div><div class="field"><label>รูปแบบโต๊ะ</label><select id="tableType"><option value="">-- เลือก --</option><option>โต๊ะ นร.</option><option>โต๊ะตัว U</option><option>โต๊ะโล่ง</option></select></div></div><div id="formError" class="error hidden"></div><div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px"><button class="btn btn-light" onclick="closeModal()">ยกเลิก</button><button class="btn btn-primary" onclick="saveBooking()">บันทึกการจอง</button></div></div></div>
 
-<div id="modal" class="modal-backdrop hidden" onclick="backdropClose(event)">
- <div class="modal">
-  <div class="modal-head"><div><h2 id="modalTitle">จองห้องประชุม</h2><p class="sub">กรอกรายละเอียดการใช้งาน</p></div><button class="close" onclick="closeModal()">✕</button></div>
-  <div class="notice">ระบบจะตรวจสอบ <b>ห้อง + วันที่ + ช่วงเวลา</b> และไม่อนุญาตให้จองซ้ำ</div>
-  <div class="form-grid">
-    <div class="field"><label>วันที่ *</label><input id="date" type="date" min="2026-10-01" max="2026-10-30" onchange="updateSlots()"></div>
-    <div class="field"><label>ห้องประชุม *</label><select id="room" onchange="updateSlots()"><option value="">-- เลือกห้อง --</option><option>Wellness Aging</option><option>ANC</option></select></div>
-    <div class="field full"><label>ช่วงเวลา *</label><div class="radio-row">
-      <label id="amBox" class="radio"><input type="radio" name="period" value="เช้า">🌅 ภาคเช้า (08:30–12:00 น.)</label>
-      <label id="pmBox" class="radio"><input type="radio" name="period" value="บ่าย">🌇 ภาคบ่าย (13:00–16:00 น.)</label>
-    </div></div>
-    <div class="field full"><label>หัวข้อ / เรื่อง *</label><input id="topic" placeholder="เช่น ประชุมเตรียมงาน"></div>
-    <div class="field"><label>ผู้เข้าร่วม</label><input id="participants" placeholder="เช่น 10 คน / รายชื่อ"></div>
-    <div class="field"><label>รูปแบบโต๊ะ</label><select id="tableType"><option value="">-- เลือก --</option><option>โต๊ะ นร.</option><option>โต๊ะตัว U</option><option>โต๊ะโล่ง</option></select></div>
-  </div>
-  <div id="formError" class="error hidden"></div>
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px">
-    <button class="btn btn-light" onclick="closeModal()">ยกเลิก</button>
-    <button class="btn btn-primary" onclick="saveBooking()">บันทึกการจอง</button>
-  </div>
- </div>
-</div>
+<div id="roomModal" class="modal-backdrop hidden" onclick="roomBackdropClose(event)"><div class="modal"><div class="modal-head"><div><h2>เพิ่มห้องประชุม</h2><p class="sub">กำหนดวันที่และช่วงเวลาที่ห้องเปิดให้จอง</p></div><button class="close" onclick="closeRoomModal()">✕</button></div><div class="form-grid"><div class="field full"><label>ชื่อห้องประชุม *</label><input id="newRoomName" placeholder="เช่น ห้องประชุมใหญ่"></div><div class="field full"><label>วันที่เปิดให้จอง</label><div class="check-row" id="dayChecks"><label class="check"><input type="checkbox" value="1" checked>จันทร์</label><label class="check"><input type="checkbox" value="2" checked>อังคาร</label><label class="check"><input type="checkbox" value="3" checked>พุธ</label><label class="check"><input type="checkbox" value="4" checked>พฤหัสบดี</label><label class="check"><input type="checkbox" value="5" checked>ศุกร์</label><label class="check"><input type="checkbox" value="6">เสาร์</label><label class="check"><input type="checkbox" value="0">อาทิตย์</label></div></div><div class="field full"><label>ช่วงเวลาที่เปิดให้จอง</label><div class="check-row"><label class="check"><input id="newAm" type="checkbox" checked>🌅 ภาคเช้า</label><label class="check"><input id="newPm" type="checkbox" checked>🌇 ภาคบ่าย</label></div></div></div><div id="roomError" class="error hidden"></div><div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px"><button class="btn btn-light" onclick="closeRoomModal()">ยกเลิก</button><button class="btn btn-primary" onclick="addRoom()">เพิ่มห้อง</button></div></div></div>
 
 <script>
-const LOGIN_USER="admin", LOGIN_PASS="1234";
-const STORAGE_KEY="meetingBookingsOct2569";
-let bookings=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+const ADMIN_USER="kitti", ADMIN_PASS="07976";
+const BOOKINGS_KEY="meetingBookingsOct2569_v3";
+const USERS_KEY="meetingUsersOct2569_v3";
+const ROOMS_KEY="meetingRoomsOct2569_v3";
+const SESSION_KEY="meetingCurrentUserOct2569_v3";
+const DEFAULT_ROOMS=[
+ {id:"wellness",name:"Wellness Aging",days:[1,2,3,4],periods:["เช้า","บ่าย"]},
+ {id:"anc",name:"ANC",days:[1,2,3,4,5],periods:["บ่าย"]}
+];
+let bookings=JSON.parse(localStorage.getItem(BOOKINGS_KEY)||"[]");
+let users=JSON.parse(localStorage.getItem(USERS_KEY)||"[]");
+let rooms=JSON.parse(localStorage.getItem(ROOMS_KEY)||"null");
+if(!rooms){rooms=DEFAULT_ROOMS;saveRooms()}
+let currentUser=sessionStorage.getItem(SESSION_KEY)||"";
 let editingId=null;
-
 const thaiMonths=["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
-function login(){
-  const u=document.getElementById("username").value.trim(), p=document.getElementById("password").value;
-  if(u===LOGIN_USER && p===LOGIN_PASS){
-    sessionStorage.setItem("meetingLogin","1");
-    showApp();
-  }else document.getElementById("loginError").classList.remove("hidden");
-}
-function logout(){sessionStorage.removeItem("meetingLogin");location.reload()}
-function showApp(){document.getElementById("loginPage").classList.add("hidden");document.getElementById("app").classList.remove("hidden");renderAll()}
-if(sessionStorage.getItem("meetingLogin")==="1")showApp();
-
-function validRoomPeriod(date,room,period){
-  if(!date||!room||!period)return false;
-  const d=new Date(date+"T00:00:00").getDay(); // 0 Sun, 1 Mon
-  if(room==="Wellness Aging") return [1,2,3,4].includes(d) && ["เช้า","บ่าย"].includes(period);
-  if(room==="ANC") return [1,2,3,4,5].includes(d) && period==="บ่าย";
-  return false;
-}
-function isBooked(date,room,period,excludeId=null){
-  return bookings.some(b=>b.date===date&&b.room===room&&b.period===period&&b.id!==excludeId);
-}
-function thaiDate(date){
-  const d=new Date(date+"T00:00:00");
-  return `${d.getDate()} ${thaiMonths[d.getMonth()]} ${d.getFullYear()+543}`;
-}
-function renderCalendar(){
-  const cal=document.getElementById("calendar"); cal.innerHTML="";
-  const first=new Date("2026-10-01T00:00:00");
-  const offset=(first.getDay()+6)%7;
-  for(let i=0;i<offset;i++){const x=document.createElement("div");x.className="day muted";cal.appendChild(x)}
-  for(let day=1;day<=30;day++){
-    const date=`2026-10-${String(day).padStart(2,"0")}`;
-    const dow=new Date(date+"T00:00:00").getDay();
-    const el=document.createElement("div");el.className="day";
-    el.innerHTML=`<div class="daynum">${day}</div>`;
-    const waAm=validRoomPeriod(date,"Wellness Aging","เช้า"), waPm=validRoomPeriod(date,"Wellness Aging","บ่าย"), ancPm=validRoomPeriod(date,"ANC","บ่าย");
-    [["Wellness Aging","เช้า",waAm,"WA เช้า"],["Wellness Aging","บ่าย",waPm,"WA บ่าย"],["ANC","บ่าย",ancPm,"ANC บ่าย"]].forEach(([room,p,valid,label])=>{
-      if(!valid){el.innerHTML+=`<div class="slot na">${label} —</div>`;return}
-      const b=bookings.find(x=>x.date===date&&x.room===room&&x.period===p);
-      el.innerHTML+=`<div class="slot ${b?"busy":"free"}" title="${b?b.topic:"ว่าง"}">${label} ${b?"🔴":"🟢"}</div>`;
-    });
-    el.onclick=()=>{document.getElementById("date").value=date;openModal()};
-    cal.appendChild(el);
-  }
-}
-function renderList(){
-  const box=document.getElementById("bookingList");
-  const arr=[...bookings].sort((a,b)=>(a.date+a.period).localeCompare(b.date+b.period));
-  if(!arr.length){box.innerHTML='<div class="empty">ยังไม่มีรายการจอง<br>กด “＋ จองห้องประชุม” เพื่อเพิ่มรายการ</div>';return}
-  box.innerHTML=arr.map(b=>`
-    <div class="booking">
-      <div class="booking-top"><div><b>${thaiDate(b.date)}</b><br><span class="sub">${b.room}</span></div>
-      <span class="badge ${b.period==="เช้า"?"badge-am":"badge-pm"}">${b.period==="เช้า"?"🌅":"🌇"} ${b.period}</span></div>
-      <div class="meta">
-        🕐 ${b.period==="เช้า"?"08:30–12:00 น.":"13:00–16:00 น."}<br>
-        📌 ${escapeHtml(b.topic)}<br>
-        👥 ${escapeHtml(b.participants||"-")} &nbsp; | &nbsp; 🪑 ${escapeHtml(b.tableType||"-")}
-      </div>
-      <div class="actions"><button class="btn btn-light btn-small" onclick="editBooking('${b.id}')">แก้ไข</button><button class="btn btn-danger btn-small" onclick="deleteBooking('${b.id}')">ลบ</button></div>
-    </div>`).join("");
-}
-function renderAll(){renderCalendar();renderList()}
-function openModal(id=null){
-  editingId=id;
-  document.getElementById("modalTitle").textContent=id?"แก้ไขการจอง":"จองห้องประชุม";
-  document.getElementById("formError").classList.add("hidden");
-  if(id){
-    const b=bookings.find(x=>x.id===id);
-    date.value=b.date;room.value=b.room;topic.value=b.topic;participants.value=b.participants||"";tableType.value=b.tableType||"";
-    document.querySelectorAll('input[name="period"]').forEach(r=>r.checked=r.value===b.period);
-  }else{
-    date.value=date.value||"";room.value="";topic.value="";participants.value="";tableType.value="";
-    document.querySelectorAll('input[name="period"]').forEach(r=>r.checked=false);
-  }
-  updateSlots();document.getElementById("modal").classList.remove("hidden");
-}
+const dayNames={0:"อาทิตย์",1:"จันทร์",2:"อังคาร",3:"พุธ",4:"พฤหัสบดี",5:"ศุกร์",6:"เสาร์"};
+function isAdmin(){return currentUser===ADMIN_USER}
+function saveBookings(){localStorage.setItem(BOOKINGS_KEY,JSON.stringify(bookings))}
+function saveUsers(){localStorage.setItem(USERS_KEY,JSON.stringify(users))}
+function saveRooms(){localStorage.setItem(ROOMS_KEY,JSON.stringify(rooms))}
+function showAuth(mode){document.getElementById("loginForm").classList.toggle("hidden",mode!=="login");document.getElementById("signupForm").classList.toggle("hidden",mode!=="signup");document.getElementById("tabLogin").classList.toggle("active",mode==="login");document.getElementById("tabSignup").classList.toggle("active",mode==="signup");document.getElementById("loginError").classList.add("hidden");document.getElementById("signupError").classList.add("hidden");document.getElementById("signupSuccess").classList.add("hidden")}
+function login(){const u=document.getElementById("username").value.trim();const p=document.getElementById("password").value;if((u===ADMIN_USER&&p===ADMIN_PASS)||users.some(x=>x.username===u&&x.password===p)){currentUser=u;sessionStorage.setItem(SESSION_KEY,currentUser);showApp()}else document.getElementById("loginError").classList.remove("hidden")}
+function signup(){const u=document.getElementById("newUsername").value.trim();const p=document.getElementById("newPassword").value;const p2=document.getElementById("newPassword2").value;const e=document.getElementById("signupError");const s=document.getElementById("signupSuccess");e.classList.add("hidden");s.classList.add("hidden");if(!/^[A-Za-z0-9._-]{3,24}$/.test(u)){e.textContent="ชื่อผู้ใช้ต้องมี 3–24 ตัว และใช้ A-Z, a-z, 0-9, จุด, ขีด หรือขีดล่าง";e.classList.remove("hidden");return}if(u.toLowerCase()===ADMIN_USER.toLowerCase()||users.some(x=>x.username.toLowerCase()===u.toLowerCase())){e.textContent="ชื่อผู้ใช้นี้ถูกใช้แล้ว";e.classList.remove("hidden");return}if(p.length<4){e.textContent="รหัสผ่านต้องมีอย่างน้อย 4 ตัวอักษร";e.classList.remove("hidden");return}if(p!==p2){e.textContent="รหัสผ่านทั้งสองช่องไม่ตรงกัน";e.classList.remove("hidden");return}users.push({username:u,password:p});saveUsers();s.textContent="สมัครสมาชิกสำเร็จ สามารถเข้าสู่ระบบได้เลย";s.classList.remove("hidden");document.getElementById("newUsername").value="";document.getElementById("newPassword").value="";document.getElementById("newPassword2").value=""}
+function logout(){sessionStorage.removeItem(SESSION_KEY);currentUser="";location.reload()}
+function showApp(){document.getElementById("loginPage").classList.add("hidden");document.getElementById("app").classList.remove("hidden");document.getElementById("userPill").textContent=isAdmin()?"👑 Admin: kitti":"👤 สมาชิก: "+currentUser;document.getElementById("adminPanel").classList.toggle("hidden",!isAdmin());renderAll()}
+if(currentUser)showApp();
+function getRoom(name){return rooms.find(r=>r.name===name)}
+function validRoomPeriod(date,roomName,period){const r=getRoom(roomName);if(!date||!r||!period)return false;const d=new Date(date+"T00:00:00").getDay();if(!r.days.includes(d))return false;if(period==="ทั้งวัน")return r.periods.includes("เช้า")&&r.periods.includes("บ่าย");return r.periods.includes(period)}
+function periodSlots(period){return period==="ทั้งวัน"?["เช้า","บ่าย"]:[period]}
+function isBooked(date,room,period,excludeId=null){const slots=periodSlots(period);return bookings.some(b=>b.date===date&&b.room===room&&b.id!==excludeId&&periodSlots(b.period).some(x=>slots.includes(x)))}
+function isAvailable(date,room,period,excludeId=null){if(!validRoomPeriod(date,room,period))return false;return periodSlots(period).every(slot=>validRoomPeriod(date,room,slot)&&!isBooked(date,room,slot,excludeId))}
+function thaiDate(date){const d=new Date(date+"T00:00:00");return `${d.getDate()} ${thaiMonths[d.getMonth()]} ${d.getFullYear()+543}`}
+function periodText(p){return p==="เช้า"?"08:30–12:00 น.":p==="บ่าย"?"13:00–16:00 น.":"08:30–16:00 น. (พัก 12:00–13:00 น.)"}
+function renderCalendar(){const cal=document.getElementById("calendar");cal.innerHTML="";const first=new Date("2026-10-01T00:00:00");const offset=(first.getDay()+6)%7;for(let i=0;i<offset;i++){const x=document.createElement("div");x.className="day muted";cal.appendChild(x)}for(let day=1;day<=30;day++){const date=`2026-10-${String(day).padStart(2,"0")}`;const el=document.createElement("div");el.className="day";el.innerHTML=`<div class="daynum">${day}</div>`;rooms.forEach(r=>{["เช้า","บ่าย"].forEach(p=>{const valid=validRoomPeriod(date,r.name,p);if(!valid)return;const b=bookings.find(x=>x.date===date&&x.room===r.name&&periodSlots(x.period).includes(p));const short=r.name.length>13?r.name.slice(0,12)+"…":r.name;el.innerHTML+=`<div class="slot ${b?"busy":"free"}" title="${b?escapeHtml(b.topic):"ว่าง"}">${short} ${p} ${b?"🔴":"🟢"}</div>`})});el.onclick=()=>{document.getElementById("date").value=date;openModal()};cal.appendChild(el)}}
+function renderList(){const box=document.getElementById("bookingList");const arr=[...bookings].sort((a,b)=>(a.date+a.period).localeCompare(b.date+b.period));if(!arr.length){box.innerHTML='<div class="empty">ยังไม่มีรายการจอง<br>กด “＋ จองห้องประชุม” เพื่อเพิ่มรายการ</div>';return}box.innerHTML=arr.map(b=>{const mine=b.owner===currentUser;const canEdit=isAdmin()||mine;return `<div class="booking"><div class="booking-top"><div><b>${thaiDate(b.date)}</b><br><span class="sub">${escapeHtml(b.room)}</span></div><span class="badge ${b.period==="เช้า"?"badge-am":b.period==="บ่าย"?"badge-pm":"badge-day"}">${b.period==="เช้า"?"🌅":b.period==="บ่าย"?"🌇":"☀️"} ${b.period}</span></div><div class="meta">🕐 ${periodText(b.period)}<br>📌 ${escapeHtml(b.topic)}<br>👥 ${escapeHtml(b.participants||"-")} &nbsp; | &nbsp; 🪑 ${escapeHtml(b.tableType||"-")}<br>👤 ผู้จอง: ${escapeHtml(b.owner||"-")}</div>${canEdit?`<div class="actions"><button class="btn btn-light btn-small" onclick="editBooking('${b.id}')">แก้ไข</button><button class="btn btn-danger btn-small" onclick="deleteBooking('${b.id}')">${isAdmin()&&!mine?"ลบโดย Admin":"ลบ"}</button></div>`:""}</div>`}).join("")}
+function renderRooms(){const box=document.getElementById("roomList");if(!isAdmin())return;if(!rooms.length){box.innerHTML='<div class="empty">ยังไม่มีห้องประชุม</div>';return}box.innerHTML=rooms.map(r=>`<div class="room-item"><div><b>${escapeHtml(r.name)}</b><div class="room-meta">${r.days.map(d=>dayNames[d]).join(" · ")}<br>${r.periods.map(p=>p==="เช้า"?"🌅 เช้า": "🌇 บ่าย").join(" · ")}</div></div><button class="btn btn-danger btn-small" onclick="deleteRoom('${r.id}')">ลบห้อง</button></div>`).join("")}
+function renderAll(){renderCalendar();renderList();renderRooms()}
+function buildRoomOptions(selected=""){const sel=document.getElementById("room");sel.innerHTML='<option value="">-- เลือกห้อง --</option>'+rooms.map(r=>`<option value="${escapeAttr(r.name)}">${escapeHtml(r.name)}</option>`).join("");sel.value=selected}
+function buildPeriodOptions(){document.getElementById("periodOptions").innerHTML='<label id="amBox" class="radio"><input type="radio" name="period" value="เช้า">🌅 ภาคเช้า (08:30–12:00 น.)</label><label id="pmBox" class="radio"><input type="radio" name="period" value="บ่าย">🌇 ภาคบ่าย (13:00–16:00 น.)</label><label id="fullBox" class="radio"><input type="radio" name="period" value="ทั้งวัน">☀️ ทั้งวัน (08:30–16:00 น.)</label>'}
+function openModal(id=null){editingId=id;buildRoomOptions();buildPeriodOptions();document.getElementById("modalTitle").textContent=id?"แก้ไขการจอง":"จองห้องประชุม";document.getElementById("formError").classList.add("hidden");if(id){const b=bookings.find(x=>x.id===id);if(!b)return;document.getElementById("date").value=b.date;document.getElementById("room").value=b.room;document.getElementById("topic").value=b.topic;document.getElementById("participants").value=b.participants||"";document.getElementById("tableType").value=b.tableType||"";document.querySelectorAll('input[name="period"]').forEach(r=>r.checked=r.value===b.period)}else{document.getElementById("date").value=document.getElementById("date").value||"";document.getElementById("room").value="";document.getElementById("topic").value="";document.getElementById("participants").value="";document.getElementById("tableType").value="";document.querySelectorAll('input[name="period"]').forEach(r=>r.checked=false)}updateSlots();document.getElementById("modal").classList.remove("hidden")}
 function closeModal(){document.getElementById("modal").classList.add("hidden");editingId=null}
 function backdropClose(e){if(e.target.id==="modal")closeModal()}
-function updateSlots(){
-  const d=document.getElementById("date").value, r=document.getElementById("room").value;
-  const am=document.querySelector('input[value="เช้า"]'), pm=document.querySelector('input[value="บ่าย"]');
-  const amBox=document.getElementById("amBox"), pmBox=document.getElementById("pmBox");
-  [am,pm].forEach(x=>{x.disabled=true;x.checked=false});amBox.classList.add("disabled");pmBox.classList.add("disabled");
-  if(!d||!r)return;
-  [["เช้า",am,amBox],["บ่าย",pm,pmBox]].forEach(([p,input,box])=>{
-    const valid=validRoomPeriod(d,r,p), busy=isBooked(d,r,p,editingId);
-    if(valid&&!busy){input.disabled=false;box.classList.remove("disabled")}
-    else if(valid&&busy){box.classList.remove("disabled");box.title="ช่วงเวลานี้ถูกจองแล้ว"}
-  });
-}
-function saveBooking(){
-  const d=date.value,r=room.value,p=document.querySelector('input[name="period"]:checked')?.value,t=topic.value.trim(),part=participants.value.trim(),tab=tableType.value;
-  const err=document.getElementById("formError");
-  if(!d||!r||!p||!t){err.textContent="กรุณากรอกข้อมูลที่มีเครื่องหมาย * ให้ครบ";err.classList.remove("hidden");return}
-  if(!validRoomPeriod(d,r,p)){err.textContent="วันหรือช่วงเวลานี้ไม่เปิดให้จองสำหรับห้องที่เลือก";err.classList.remove("hidden");return}
-  if(isBooked(d,r,p,editingId)){err.textContent="ไม่สามารถจองได้ — ห้องนี้มีผู้จองในช่วงเวลาดังกล่าวแล้ว";err.classList.remove("hidden");updateSlots();return}
-  const obj={id:editingId||crypto.randomUUID(),date:d,room:r,period:p,topic:t,participants:part,tableType:tab};
-  if(editingId) bookings=bookings.map(x=>x.id===editingId?obj:x); else bookings.push(obj);
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(bookings));
-  closeModal();renderAll();
-}
-function editBooking(id){openModal(id)}
-function deleteBooking(id){
-  const b=bookings.find(x=>x.id===id);
-  if(confirm(`ต้องการลบการจอง ${b.room} วันที่ ${thaiDate(b.date)} ภาค${b.period} หรือไม่?`)){
-    bookings=bookings.filter(x=>x.id!==id);localStorage.setItem(STORAGE_KEY,JSON.stringify(bookings));renderAll();
-  }
-}
+function updateSlots(){const d=document.getElementById("date").value,r=document.getElementById("room").value;const am=document.querySelector('input[value="เช้า"]'),pm=document.querySelector('input[value="บ่าย"]'),full=document.querySelector('input[value="ทั้งวัน"]');if(!am)return;[am,pm,full].forEach(x=>{x.disabled=true;x.checked=false});["amBox","pmBox","fullBox"].forEach(id=>{document.getElementById(id).classList.add("disabled")});if(!d||!r)return;[["เช้า",am,"amBox"],["บ่าย",pm,"pmBox"],["ทั้งวัน",full,"fullBox"]].forEach(([p,input,boxId])=>{const valid=validRoomPeriod(d,r,p),available=isAvailable(d,r,p,editingId);if(valid&&available){input.disabled=false;document.getElementById(boxId).classList.remove("disabled")}})}
+function saveBooking(){const d=document.getElementById("date").value,r=document.getElementById("room").value,p=document.querySelector('input[name="period"]:checked')?.value,t=document.getElementById("topic").value.trim(),part=document.getElementById("participants").value.trim(),tab=document.getElementById("tableType").value,err=document.getElementById("formError");if(!d||!r||!p||!t){err.textContent="กรุณากรอกข้อมูลที่มีเครื่องหมาย * ให้ครบ";err.classList.remove("hidden");return}if(!validRoomPeriod(d,r,p)){err.textContent="วันหรือช่วงเวลานี้ไม่เปิดให้จองสำหรับห้องที่เลือก";err.classList.remove("hidden");return}if(!isAvailable(d,r,p,editingId)){err.textContent="ไม่สามารถจองได้ — ช่วงเวลานี้มีการจองอยู่แล้วหรือช่วงเวลาที่เลือกไม่เปิดให้บริการ";err.classList.remove("hidden");updateSlots();return}const old=editingId?bookings.find(x=>x.id===editingId):null;const obj={id:editingId||crypto.randomUUID(),date:d,room:r,period:p,topic:t,participants:part,tableType:tab,owner:old?old.owner:currentUser,createdAt:old?old.createdAt:new Date().toISOString()};if(editingId)bookings=bookings.map(x=>x.id===editingId?obj:x);else bookings.push(obj);saveBookings();closeModal();renderAll()}
+function editBooking(id){const b=bookings.find(x=>x.id===id);if(!b)return;if(!isAdmin()&&b.owner!==currentUser){alert("คุณสามารถแก้ไขได้เฉพาะรายการที่ตัวเองจอง");return}openModal(id)}
+function deleteBooking(id){const b=bookings.find(x=>x.id===id);if(!b)return;if(!isAdmin()&&b.owner!==currentUser){alert("คุณสามารถลบได้เฉพาะรายการที่ตัวเองจอง");return}if(confirm(`ต้องการลบการจอง ${b.room} วันที่ ${thaiDate(b.date)} ${b.period} หรือไม่?`)){bookings=bookings.filter(x=>x.id!==id);saveBookings();renderAll()}}
+function openRoomModal(){if(!isAdmin()){alert("เฉพาะ Admin เท่านั้น");return}document.getElementById("newRoomName").value="";document.querySelectorAll('#dayChecks input').forEach(x=>x.checked=["1","2","3","4","5"].includes(x.value));document.getElementById("newAm").checked=true;document.getElementById("newPm").checked=true;document.getElementById("roomError").classList.add("hidden");document.getElementById("roomModal").classList.remove("hidden")}
+function closeRoomModal(){document.getElementById("roomModal").classList.add("hidden")}
+function roomBackdropClose(e){if(e.target.id==="roomModal")closeRoomModal()}
+function addRoom(){const name=document.getElementById("newRoomName").value.trim();const days=[...document.querySelectorAll('#dayChecks input:checked')].map(x=>Number(x.value));const periods=[];if(document.getElementById("newAm").checked)periods.push("เช้า");if(document.getElementById("newPm").checked)periods.push("บ่าย");const err=document.getElementById("roomError");err.classList.add("hidden");if(!name){err.textContent="กรุณาระบุชื่อห้อง";err.classList.remove("hidden");return}if(!days.length||!periods.length){err.textContent="กรุณาเลือกวันและช่วงเวลาอย่างน้อย 1 รายการ";err.classList.remove("hidden");return}if(rooms.some(r=>r.name.toLowerCase()===name.toLowerCase())){err.textContent="มีห้องชื่อนี้อยู่แล้ว";err.classList.remove("hidden");return}rooms.push({id:crypto.randomUUID(),name,days,periods});saveRooms();closeRoomModal();renderAll()}
+function deleteRoom(id){if(!isAdmin())return;const r=rooms.find(x=>x.id===id);if(!r)return;const related=bookings.filter(b=>b.room===r.name);const msg=related.length?`ห้อง ${r.name} มีการจองอยู่ ${related.length} รายการ\nการลบห้องจะลบรายการจองของห้องนี้ด้วย\n\nยืนยันการลบหรือไม่?`:`ยืนยันการลบห้อง ${r.name} หรือไม่?`;if(confirm(msg)){rooms=rooms.filter(x=>x.id!==id);bookings=bookings.filter(b=>b.room!==r.name);saveRooms();saveBookings();renderAll()}}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+function escapeAttr(s){return escapeHtml(s).replace(/`/g,"&#096;")}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeRoomModal()}});
 </script>
 </body>
 </html>
